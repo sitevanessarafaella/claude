@@ -1,0 +1,121 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 responsive.css — Vanessa Rafaella
+   
+   ▸ Todas as media queries em UM lugar
+   ▸ Mobile-first (base = celular pequeno)
+   ▸ Vai ampliando pra telas maiores
+   
+   📐 BREAKPOINTS:
+   • Base (< 600px)   → 📱 celular pequeno
+   • ≥ 600px          → 📲 tablet portrait
+   • ≥ 860px          → 💻 laptop
+   • ≥ 1200px         → 🖥️ desktop grande
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   📲 TABLET (a partir de 600px)
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 600px) {
+
+  /* Padding lateral aumenta */
+  :root {
+    --container-padding: 2rem;
+  }
+
+  /* Logo um pouco maior */
+  .nav-logo-text {
+    font-size: 1.1rem;
+  }
+
+  /* Plataformas secundárias: 2 colunas */
+  .secondary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Experiências exclusivas: 2 colunas */
+  .exclusive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Vídeos features: 2 colunas */
+  .videos-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   💻 LAPTOP (a partir de 860px)
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 860px) {
+
+  /* Padding lateral aumenta de novo */
+  :root {
+    --container-padding: 2.5rem;
+  }
+
+  /* Links centrais da nav aparecem */
+  .nav-links {
+    display: flex;
+  }
+
+  /* Hamburger some, botão "Menu" aparece */
+  .hamburger { display: none; }
+  .btn-menu-desktop { display: inline-flex; }
+
+  /* Plataformas principais: 2 colunas */
+  .platforms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+  .platform-card {
+    padding: 2.5rem 2rem;
+  }
+
+  /* Bottom bar mobile some */
+  .bottom-bar {
+    display: none;
+  }
+
+  /* WhatsApp float reajusta */
+  .wa-float {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  /* Footer não precisa de padding extra (sem bottom bar) */
+  footer {
+    padding-bottom: 3rem;
+  }
+
+  /* Títulos de section maiores */
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   🖥️ DESKTOP GRANDE (a partir de 1200px)
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 1200px) {
+
+  /* Padding lateral final */
+  :root {
+    --container-padding: 3rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ♿ MOVIMENTO REDUZIDO (acessibilidade)
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

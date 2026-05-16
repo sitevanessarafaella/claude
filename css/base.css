@@ -1,0 +1,275 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 base.css — Vanessa Rafaella
+   
+   ▸ Variáveis de cor (dark + light)
+   ▸ Reset CSS
+   ▸ Classe .container (alinhamento global)
+   ▸ Loading screen
+   
+   📐 CONTAINER MÁXIMO: 1200px
+   📦 Toda página usa .container pra alinhar nav e conteúdo
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 🌑 TEMA ESCURO (padrão) ─────────────────────────────────── */
+:root[data-theme="dark"] {
+  /* Fundos */
+  --bg:           #050508;
+  --bg-soft:      #0d0d12;
+  --bg-card:      #14141c;
+  --bg-elevated:  #1a1a25;
+
+  /* Textos */
+  --ink:          #fafafa;
+  --ink-soft:     #c5c5d0;
+  --ink-mute:     #8a8a98;
+
+  /* Bordas */
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  /* 🔥 Fogo (usado APENAS no hero e em detalhes pontuais) */
+  --fire-red:    #e50914;
+  --fire-orange: #ff6b00;
+  --fire-amber:  #ff9d00;
+  --fire-glow:   rgba(255, 107, 0, 0.4);
+  --fire-shadow: rgba(229, 9, 20, 0.5);
+
+  /* Cores das plataformas */
+  --privacy:   #ff6b00;
+  --onlyfans:  #00aff0;
+  --xvideos:   #c62828;
+  --twitter:   #1d9bf0;
+  --telegram:  #2aabee;
+  --whatsapp:  #25d366;
+  --instagram: #e1306c;
+}
+
+
+/* ─── ☀️ TEMA CLARO ──────────────────────────────────────────── */
+:root[data-theme="light"] {
+  --bg:           #f8f4f4;
+  --bg-soft:      #ffffff;
+  --bg-card:      #ffffff;
+  --bg-elevated:  #fff8f3;
+
+  --ink:          #0a0a0a;
+  --ink-soft:     #2a2420;
+  --ink-mute:     #6a5d52;
+
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+
+  --fire-red:    #e50914;
+  --fire-orange: #ff6b00;
+  --fire-amber:  #ff9d00;
+  --fire-glow:   rgba(255, 107, 0, 0.3);
+  --fire-shadow: rgba(229, 9, 20, 0.35);
+
+  --privacy:   #ff6b00;
+  --onlyfans:  #00aff0;
+  --xvideos:   #c62828;
+  --twitter:   #1d9bf0;
+  --telegram:  #2aabee;
+  --whatsapp:  #25d366;
+  --instagram: #e1306c;
+}
+
+
+/* ─── 📐 VARIÁVEIS GLOBAIS (não dependem de tema) ─────────────── */
+:root {
+  /* 📦 Container — largura máxima e padding lateral */
+  --container-max: 1200px;
+  --container-padding: 1.25rem;     /* 📱 mobile (cresce nas media queries) */
+
+  /* Altura da navbar (usada pra compensar conteúdo abaixo) */
+  --nav-height: 72px;
+
+  /* Tipografia */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body:    'Manrope', sans-serif;
+}
+
+
+/* ─── 🔄 RESET ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--fire-orange);
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ─── 📦 .container — A CLASSE QUE ALINHA TUDO ───────────────── */
+/* 
+  Use .container em qualquer wrapper que precise respeitar a largura
+  máxima (1200px) e o padding lateral. É o que mantém nav, hero,
+  sections e footer alinhados na mesma "coluna invisível".
+*/
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+/* ─── ⏳ LOADING SCREEN ──────────────────────────────────────── */
+.loading {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loading.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loading-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border);
+  border-top-color: var(--fire-orange);
+  border-right-color: var(--fire-red);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ─── ♿ SKIP LINK (acessibilidade) ──────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--fire-orange);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  z-index: 10000;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+
+/* ─── 📜 SCROLLBAR ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fire-orange);
+}
+
+
+/* ─── 🎯 SCROLL REVEAL (animação ao aparecer) ──────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(.2,.8,.2,1),
+    transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ─── 🔘 BOTÕES GLOBAIS ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--fire-red) 0%, var(--fire-orange) 100%);
+  color: #fff;
+  box-shadow: 0 8px 25px var(--fire-shadow);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--fire-shadow);
+}
+
+.btn-secondary {
+  background: var(--telegram);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover {
+  border-color: var(--telegram);
+  color: var(--telegram);
+  transform: translateY(-3px);
+}
+
+.btn i { font-size: 0.85em; }

@@ -1,0 +1,363 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 nav.css — Vanessa Rafaella
+   
+   ▸ Navbar fixa no topo
+   ▸ Logo + links centrais (desktop)
+   ▸ Controles: tema, idioma, menu
+   ▸ Menu lateral mobile
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 🧭 NAVBAR FIXA ─────────────────────────────────────────── */
+#mainNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* 📦 Wrapper interno — usa o MESMO container do conteúdo */
+.nav-inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 1rem var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: var(--nav-height);
+}
+
+/* Quando rola, ganha fundo blurred */
+#mainNav.scrolled {
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+:root[data-theme="light"] #mainNav.scrolled {
+  background: rgba(248, 244, 244, 0.92);
+}
+
+/* Quando passa pela section Privacy (laranja) */
+#mainNav.nav--light {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+#mainNav.nav--light .nav-link,
+#mainNav.nav--light .nav-logo-text,
+#mainNav.nav--light .nav-logo-tag { color: #0a0a0a; }
+
+/* Quando passa pela section OnlyFans (azul) */
+#mainNav.nav--onlyfans {
+  background: rgba(0, 30, 50, 0.92);
+  border-bottom: 1px solid rgba(0, 175, 240, 0.3);
+}
+#mainNav.nav--onlyfans .nav-link { color: #fff; }
+
+
+/* ─── 🏷️ LOGO ────────────────────────────────────────────────── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.nav-logo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+    var(--fire-red) 0%,
+    var(--fire-orange) 50%,
+    var(--fire-amber) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px var(--fire-shadow);
+}
+.nav-logo-icon::before {
+  content: '🔥';
+  font-size: 1.1rem;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.nav-logo-text strong { color: var(--fire-orange); }
+.nav-logo-tag {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 1px;
+}
+
+
+/* ─── 🔗 LINKS CENTRAIS (só desktop) ─────────────────────────── */
+.nav-links {
+  display: none;                    /* 📱 escondido no mobile */
+  align-items: center;
+  gap: 0.25rem;
+}
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--fire-orange);
+  background: rgba(255, 107, 0, 0.08);
+}
+
+
+/* ─── 🎛️ CONTROLES (tema + idioma + menu) ────────────────────── */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botão de tema (lua/sol) */
+.nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+.nav-btn:hover {
+  background: var(--fire-orange);
+  color: #fff;
+  border-color: var(--fire-orange);
+}
+
+/* Dropdown de idioma */
+.lang-sel { position: relative; }
+
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.75rem;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+.lang-trigger:hover {
+  border-color: var(--fire-orange);
+  color: var(--fire-orange);
+}
+.lang-arrow {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+}
+.lang-sel.open .lang-arrow { transform: rotate(180deg); }
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 150px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.35rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+}
+.lang-sel.open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.lang-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  width: 100%;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.lang-opt:hover {
+  background: rgba(255, 107, 0, 0.1);
+  color: var(--fire-orange);
+}
+.lang-opt[aria-selected="true"] {
+  color: var(--fire-orange);
+  background: rgba(255, 107, 0, 0.08);
+}
+
+/* Hamburger mobile */
+.hamburger {
+  display: flex;                    /* 📱 mobile */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  align-items: center;
+}
+.hamburger span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: var(--ink);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 5px);
+  background: var(--fire-orange);
+}
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -5px);
+  background: var(--fire-orange);
+}
+
+/* Botão "Menu" desktop (alternativo ao hamburger) */
+.btn-menu-desktop {
+  display: none;                    /* 📱 escondido no mobile */
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--fire-red) 0%, var(--fire-orange) 100%);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px var(--fire-shadow);
+  transition: all 0.3s ease;
+}
+.btn-menu-desktop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--fire-shadow);
+}
+
+
+/* ─── 📲 MENU MOBILE / LATERAL ───────────────────────────────── */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.mob-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mob-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(85vw, 380px);
+  background: var(--bg);
+  z-index: 1600;
+  padding: 5rem 1.5rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+}
+.mob-menu.active { transform: translateX(0); }
+
+.mob-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+}
+
+.mob-menu-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 1.5rem 0 0.75rem;
+}
+.mob-menu-title:first-of-type { margin-top: 0; }
+
+.mob-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+.mob-menu a:hover {
+  background: rgba(255, 107, 0, 0.08);
+  border-color: rgba(255, 107, 0, 0.2);
+  color: var(--fire-orange);
+}
+.mob-menu a i {
+  width: 22px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+.mob-menu a small {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-mute);
+}

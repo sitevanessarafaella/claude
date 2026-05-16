@@ -1,0 +1,239 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 hero.css — Vanessa Rafaella
+   
+   ▸ Hero full-screen com VÍDEO de fundo
+   ▸ Overlay LEVE pra não escurecer demais o vídeo
+   ▸ Partículas de fogo restritas ao hero (canvas)
+   ▸ Sem foto — apenas título + tagline + CTAs
+   
+   🔥 FOGO mora SÓ aqui dentro. Resto do site é limpo.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 🎬 HERO SECTION ────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;              /* respeita barra mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+  
+
+  /* 🎨 Fundo escuro caso o vídeo demore */
+  background: #050508;
+}
+
+
+/* ─── 🎥 VÍDEO DE FUNDO ──────────────────────────────────────── */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;                    /* quase total — fogo discreto no overlay */
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* ─── 🌫️ OVERLAY LEVE ───────────────────────────────────────── */
+/* Não escurece muito. Só garante contraste do texto. */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 8, 0.20)  0%,
+    rgba(5, 5, 8, 0.35) 60%,
+    rgba(5, 5, 8, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+
+/* ─── ✨ PARTÍCULAS (canvas posicionado SÓ no hero) ──────────── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ─── 📝 CONTEÚDO ────────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 720px;
+  padding-block: 2rem;
+}
+
+
+/* Badge "✦ Conteúdo Exclusivo" */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fire-amber);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: rise 0.8s 0.2s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fire-red);
+  box-shadow: 0 0 8px var(--fire-red);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.5); }
+}
+
+
+/* Título principal */
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 12vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: rise 1s 0.4s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-title-first {
+  color: #fff;
+  display: block;
+}
+.hero-title-last {
+  display: block;
+  background: linear-gradient(
+    135deg,
+    var(--fire-red)    0%,
+    var(--fire-orange) 50%,
+    var(--fire-amber)  100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px var(--fire-glow));
+}
+
+
+/* Tagline */
+.hero-tagline {
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 42ch;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: rise 1s 0.6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+
+/* Pergunta provocativa */
+.hero-question {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  color: var(--fire-orange);
+  text-shadow: 0 0 20px var(--fire-glow);
+  margin-top: 0.5rem;
+  opacity: 0;
+  animation: rise 1s 0.8s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+
+/* Grupo de botões CTA */
+.hero-cta-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: rise 1s 1s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+
+/* Scroll hint */
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 4;
+  opacity: 0;
+  animation: rise 1s 1.5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(180deg, var(--fire-orange), transparent);
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+@keyframes scroll-bounce {
+  0%, 100% { height: 30px; opacity: 0.5; }
+  50%      { height: 50px; opacity: 1; }
+}
+
+
+/* ─── 🎬 ANIMAÇÃO DE ENTRADA ─────────────────────────────────── */
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ─── ♿ ACESSIBILIDADE: respeita preferências de movimento ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-title,
+  .hero-tagline,
+  .hero-question,
+  .hero-cta-group,
+  .hero-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .hero-particles {
+    display: none;
+  }
+}

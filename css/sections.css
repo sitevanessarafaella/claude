@@ -1,0 +1,615 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 sections.css — Vanessa Rafaella
+   
+   ▸ Headers das sections (eyebrow + title + sub)
+   ▸ Plataformas principais (Privacy + OnlyFans)
+   ▸ Vídeos / Fybot
+   ▸ Plataformas secundárias (XVideos + Twitter)
+   ▸ Experiências exclusivas
+   ▸ Telegram CTA
+   
+   🎨 Tudo aqui é estilo LIMPO e profissional.
+   🔥 SEM fogo de fundo. SEM partículas. SEM cursor especial.
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 📐 SECTION BASE — TODA SECTION OCUPA TELA INTEIRA ──────── */
+.section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  z-index: 2;
+}
+
+.section-content {
+  width: 100%;
+}
+
+
+/* ─── 🏷️ HEADER DE SECTION ───────────────────────────────────── */
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fire-orange);
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  border-radius: 999px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+.section-title em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--fire-red) 0%, var(--fire-orange) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-sub {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   1️⃣ PLATAFORMAS PRINCIPAIS — Privacy + OnlyFans
+   ═══════════════════════════════════════════════════════════════ */
+#main-platforms {
+  background: var(--bg-soft);
+}
+
+.platforms-grid {
+  display: grid;
+  grid-template-columns: 1fr;       /* 📱 mobile: 1 coluna */
+  gap: 1.25rem;
+}
+
+/* Card base */
+.platform-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.platform-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Variante Privacy */
+.platform-card.privacy {
+  border-color: rgba(255, 107, 0, 0.2);
+  background: linear-gradient(180deg,
+    var(--bg-card) 0%,
+    rgba(255, 107, 0, 0.05) 100%);
+}
+.platform-card.privacy:hover {
+  box-shadow: 0 20px 50px -15px var(--fire-shadow);
+  border-color: var(--fire-orange);
+}
+
+/* Variante OnlyFans */
+.platform-card.onlyfans {
+  border-color: rgba(0, 175, 240, 0.2);
+  background: linear-gradient(180deg,
+    var(--bg-card) 0%,
+    rgba(0, 175, 240, 0.05) 100%);
+}
+.platform-card.onlyfans:hover {
+  box-shadow: 0 20px 50px -15px rgba(0, 175, 240, 0.3);
+  border-color: var(--onlyfans);
+}
+
+/* Topo do card: badge + preço */
+.platform-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.platform-badge.privacy {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  color: #fff;
+  box-shadow: 0 4px 12px var(--fire-shadow);
+}
+.platform-badge.onlyfans {
+  background: var(--onlyfans);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 175, 240, 0.4);
+}
+
+.platform-price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+.platform-price small {
+  font-size: 0.7rem;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+/* Título + descrição */
+.platform-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+  color: var(--ink);
+}
+.platform-title-accent {
+  font-style: italic;
+  font-weight: 600;
+}
+.platform-card.privacy .platform-title-accent { color: var(--fire-orange); }
+.platform-card.onlyfans .platform-title-accent { color: var(--onlyfans); }
+
+.platform-desc {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+/* Lista de features */
+.platform-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.platform-features li {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.platform-features li i {
+  color: var(--fire-orange);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+.platform-card.onlyfans .platform-features li i {
+  color: var(--onlyfans);
+}
+
+/* CTA do card */
+.platform-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.platform-card.privacy .platform-cta {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  color: #fff;
+  box-shadow: 0 8px 20px var(--fire-shadow);
+}
+.platform-card.privacy .platform-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px var(--fire-shadow);
+}
+.platform-card.onlyfans .platform-cta {
+  background: var(--onlyfans);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 175, 240, 0.35);
+}
+.platform-card.onlyfans .platform-cta:hover {
+  background: #0090c8;
+  transform: translateY(-2px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   2️⃣ VÍDEOS / FYBOT
+   ═══════════════════════════════════════════════════════════════ */
+#videos-section {
+  background: var(--bg);
+}
+
+.videos-card {
+  background: linear-gradient(135deg,
+    rgba(229, 9, 20, 0.08) 0%,
+    rgba(255, 107, 0, 0.04) 100%);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.videos-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle,
+    var(--fire-glow) 0%,
+    transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.videos-card-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  box-shadow: 0 15px 35px var(--fire-shadow);
+  position: relative;
+  z-index: 2;
+}
+
+.videos-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+.videos-card-title-accent {
+  font-style: italic;
+  color: var(--fire-orange);
+}
+
+.videos-card-desc {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 50ch;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.videos-features {
+  display: grid;
+  grid-template-columns: 1fr;       /* 📱 mobile */
+  gap: 0.75rem;
+  max-width: 500px;
+  margin: 0 auto 1.75rem;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+.videos-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.videos-feature i {
+  color: var(--fire-orange);
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   3️⃣ PLATAFORMAS SECUNDÁRIAS — XVideos + Twitter
+   ═══════════════════════════════════════════════════════════════ */
+.secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr;       /* 📱 mobile */
+  gap: 1rem;
+}
+
+.secondary-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+.secondary-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--fire-orange);
+}
+
+.secondary-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+.secondary-icon.xvideos { background: var(--xvideos); }
+.secondary-icon.twitter { background: var(--twitter); }
+
+.secondary-info {
+  flex: 1;
+  min-width: 0;
+}
+.secondary-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.15rem;
+  color: var(--ink);
+}
+.secondary-desc {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+
+.secondary-arrow {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--ink-soft);
+}
+.secondary-card:hover .secondary-arrow {
+  background: var(--fire-orange);
+  border-color: var(--fire-orange);
+  color: #fff;
+  transform: rotate(-45deg);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   4️⃣ EXPERIÊNCIAS EXCLUSIVAS
+   ═══════════════════════════════════════════════════════════════ */
+#exclusive {
+  background: var(--bg-soft);
+}
+
+.exclusive-grid {
+  display: grid;
+  grid-template-columns: 1fr;       /* 📱 mobile */
+  gap: 1.25rem;
+}
+
+.exclusive-card {
+  background: linear-gradient(135deg,
+    var(--bg-card) 0%,
+    rgba(229, 9, 20, 0.05) 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.exclusive-card:hover {
+  border-color: var(--fire-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px var(--fire-shadow);
+}
+
+.exclusive-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 20px var(--fire-shadow);
+}
+
+.exclusive-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fire-orange);
+  margin-bottom: 0.5rem;
+}
+
+.exclusive-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+.exclusive-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.exclusive-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--fire-orange);
+  border-bottom: 1px solid var(--fire-orange);
+  padding-bottom: 2px;
+  transition: gap 0.3s ease;
+}
+.exclusive-card:hover .exclusive-cta { gap: 0.85rem; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   5️⃣ TELEGRAM CTA
+   ═══════════════════════════════════════════════════════════════ */
+#telegram-cta {
+  background: linear-gradient(180deg,
+    var(--bg) 0%,
+    rgba(42, 171, 238, 0.05) 100%);
+}
+
+.telegram-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.telegram-icon-big {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--telegram);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(42, 171, 238, 0.4);
+  position: relative;
+}
+.telegram-icon-big::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--telegram);
+  opacity: 0;
+  animation: ring 2.5s ease-out infinite;
+}
+@keyframes ring {
+  0%   { opacity: 0.5; transform: scale(0.95); }
+  100% { opacity: 0;   transform: scale(1.5); }
+}
+
+.telegram-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--telegram);
+  padding: 0.4rem 1rem;
+  background: rgba(42, 171, 238, 0.1);
+  border: 1px solid rgba(42, 171, 238, 0.3);
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.telegram-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+.telegram-title-accent {
+  font-style: italic;
+  color: var(--telegram);
+}
+
+.telegram-text {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0 auto 2rem;
+}
+
+.btn-telegram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.15rem 2.25rem;
+  background: var(--telegram);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  box-shadow: 0 15px 35px rgba(42, 171, 238, 0.4);
+  transition: all 0.3s ease;
+}
+.btn-telegram:hover {
+  background: #1e90c7;
+  transform: translateY(-3px);
+}
+
+.telegram-hint {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  font-style: italic;
+}

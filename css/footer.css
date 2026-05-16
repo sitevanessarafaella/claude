@@ -1,0 +1,140 @@
+/* ════════════════════════════════════════════════════════════════
+   📄 footer.css — Vanessa Rafaella
+   
+   ▸ Footer textual (final do conteúdo)
+   ▸ Bottom bar fixa (mobile only)
+   ▸ WhatsApp float
+   ════════════════════════════════════════════════════════════════ */
+
+
+/* ─── 📄 FOOTER TEXTUAL ──────────────────────────────────────── */
+footer {
+  padding: 3rem 0;
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--fire-orange);
+}
+
+
+/* ─── 📱 BOTTOM BAR MOBILE — atalho rápido ──────────────────── */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 800;
+  background: rgba(5, 5, 8, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
+}
+:root[data-theme="light"] .bottom-bar {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.footer-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-mute);
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+.footer-btn:hover,
+.footer-btn.active {
+  color: var(--fire-orange);
+}
+
+.footer-btn-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.footer-btn-icon.privacy {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+}
+.footer-btn-icon.onlyfans { background: var(--onlyfans); }
+.footer-btn-icon.videos {
+  background: var(--bg-card);
+  color: var(--fire-orange);
+  border: 1px solid var(--fire-orange);
+}
+.footer-btn-icon.telegram { background: var(--telegram); }
+.footer-btn-icon.twitter  { background: var(--twitter); }
+
+
+/* ─── 💬 WHATSAPP FLUTUANTE ─────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 6.5rem;                  /* 📱 mobile: acima da bottom bar */
+  right: 1.25rem;
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  animation: wa-pulse 2.5s ease-in-out infinite;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+}
+@keyframes wa-pulse {
+  0%, 100% {
+    box-shadow:
+      0 10px 30px rgba(37, 211, 102, 0.4),
+      0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 10px 30px rgba(37, 211, 102, 0.4),
+      0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
