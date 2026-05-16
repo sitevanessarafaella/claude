@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050508">
+  <meta name="description" content="Vanessa Rafaella — conteúdo exclusivo no Privacy, OnlyFans, vídeos avulsos e muito mais.">
+  <title>Vanessa Rafaella — Conteúdo Exclusivo</title>
+
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  📦 FONTES                                                 ║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║  🎨 CSS — Ordem importa!                                   ║
+    ║                                                            ║
+    ║  1. base.css       → variáveis + reset + container         ║
+    ║  2. nav.css        → navbar + menu mobile                  ║
+    ║  3. hero.css       → hero com fogo (vídeo + partículas)    ║
+    ║  4. sections.css   → plataformas, vídeos, redes, telegram  ║
+    ║  5. footer.css     → footer + bottom bar + WhatsApp        ║
+    ║  6. responsive.css → SEMPRE POR ÚLTIMO (media queries)     ║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/hero.css">
+  <link rel="stylesheet" href="./css/sections.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+
+<!-- Loading screen (some quando tudo carrega) -->
+<div id="loading" class="loading">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- Skip link (acessibilidade) -->
+<a href="#hero" class="skip-link">Ir para o conteúdo</a>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  🧭 NAVBAR                                                     ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<nav id="mainNav">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-icon"></div>
+      <div>
+        <div class="nav-logo-text">Vanessa <strong>Rafaella</strong></div>
+        <span class="nav-logo-tag" data-i18n="site_oficial">Site Oficial</span>
+      </div>
+    </a>
+
+    <!-- Links centrais (aparecem ≥ 860px) -->
+    <div class="nav-links">
+      <a href="./privacy.html" class="nav-link">Privacy</a>
+      <a href="./onlyfans.html" class="nav-link">OnlyFans</a>
+      <a href="#videos-section" class="nav-link" data-i18n="nav_videos">Vídeos</a>
+      <a href="./telegram.html" class="nav-link">Telegram</a>
+    </div>
+
+    <!-- Controles -->
+    <div class="nav-controls">
+
+      <!-- Toggle tema -->
+      <button id="themeToggle" class="nav-btn" aria-label="Alternar tema">
+        <i id="themeIcon" class="fas fa-moon"></i>
+      </button>
+
+      <!-- Dropdown idioma -->
+      <div id="langSel" class="lang-sel">
+        <button id="langTrigger" class="lang-trigger" aria-expanded="false" aria-label="Idioma">
+          <span id="langFlag">🇧🇷</span>
+          <span id="langCode">PT</span>
+          <i class="lang-arrow fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-opt" data-lang="pt" data-flag="🇧🇷" aria-selected="true">
+            <span>🇧🇷</span> <span>Português</span>
+          </button>
+          <button class="lang-opt" data-lang="en" data-flag="🇺🇸" aria-selected="false">
+            <span>🇺🇸</span> <span>English</span>
+          </button>
+          <button class="lang-opt" data-lang="es" data-flag="🇪🇸" aria-selected="false">
+            <span>🇪🇸</span> <span>Español</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Botão Menu (desktop) -->
+      <button id="btnMenuDesktop" class="btn-menu-desktop" aria-label="Menu" aria-expanded="false" data-i18n="menu">
+        Menu
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  📲 MENU LATERAL (mobile + desktop)                            ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<div id="mobOverlay" class="mob-overlay"></div>
+
+<aside id="mobMenu" class="mob-menu" hidden>
+  <button id="mobClose" class="mob-close" aria-label="Fechar">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <!-- Assinaturas -->
+  <div class="mob-menu-title" data-i18n="assinaturas">Assinaturas</div>
+  <a href="./privacy.html">
+    <i class="fas fa-fire" style="color: var(--fire-orange)"></i>
+    <span>Privacy</span>
+    <small>R$ 20</small>
+  </a>
+  <a href="./onlyfans.html">
+    <i class="fas fa-heart" style="color: var(--onlyfans)"></i>
+    <span>OnlyFans</span>
+    <small>$ 20</small>
+  </a>
+
+  <!-- Conteúdo avulso -->
+  <div class="mob-menu-title" data-i18n="conteudo">Conteúdo</div>
+  <a href="#videos-section">
+    <i class="fas fa-video" style="color: var(--fire-orange)"></i>
+    <span data-i18n="videos_avulsos">Vídeos avulsos</span>
+  </a>
+  <a href="./telegram.html">
+    <i class="fab fa-telegram" style="color: var(--telegram)"></i>
+    <span data-i18n="grupo_gratis">Grupo grátis</span>
+    <small data-i18n="gratis">grátis</small>
+  </a>
+
+  <!-- Redes -->
+  <div class="mob-menu-title" data-i18n="redes">Redes</div>
+  <!-- 👇 Trocar pelos links reais -->
+  <a href="https://www.xvideos.com/profiles/vanessarafaella" target="_blank" rel="noopener">
+    <i class="fas fa-play" style="color: var(--xvideos)"></i>
+    <span>XVideos</span>
+  </a>
+  <a href="https://twitter.com/vanessarafaella" target="_blank" rel="noopener">
+    <i class="fab fa-twitter" style="color: var(--twitter)"></i>
+    <span>Twitter / X</span>
+  </a>
+
+  <!-- Contato -->
+  <div class="mob-menu-title" data-i18n="contato">Contato</div>
+  <a href="#" id="mobWa" target="_blank">
+    <i class="fab fa-whatsapp" style="color: var(--whatsapp)"></i>
+    <span>WhatsApp</span>
+  </a>
+</aside>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  🔥 HERO — Vídeo + partículas (SÓ AQUI)                        ║
+  ║                                                                ║
+  ║  ⚠️ Pra trocar o vídeo:                                        ║
+  ║     • Substitua o arquivo "video-diabinha.mp4" na raiz         ║
+  ║     • OU mude o src do <source> abaixo                         ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section id="hero" class="hero">
+
+  <!-- 🎥 Vídeo de fundo -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="./id04-video-sexflix - cópia.mp4" type="video/mp4">
+  </video>
+
+  <!-- 🌫️ Overlay leve -->
+  <div class="hero-overlay"></div>
+
+  <!-- ✨ Container das partículas (canvas inserido pelo JS) -->
+  <div id="hero-particles" class="hero-particles"></div>
+
+  <!-- 📝 Conteúdo centralizado -->
+  <div class="container">
+    <div class="hero-content">
+
+      <span class="hero-badge" data-i18n="exclusivo">✦ Conteúdo Exclusivo</span>
+
+      <h1 class="hero-title">
+        <span class="hero-title-first">VANESSA</span>
+        <span class="hero-title-last">RAFAELLA</span>
+      </h1>
+
+      <p class="hero-tagline" data-i18n="hero_tagline">
+        Fotos e vídeos premium — conteúdo original e verificado, direto de mim para você.
+      </p>
+
+      <p class="hero-question" data-i18n="hero_question">
+        o que você quer comigo hoje?
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#main-platforms" class="btn btn-primary">
+          <i class="fas fa-fire"></i>
+          <span data-i18n="minhas_plataformas">Minhas plataformas</span>
+        </a>
+        <a href="./telegram.html" class="btn btn-secondary">
+          <i class="fab fa-telegram"></i>
+          <span data-i18n="grupo_gratis">Grupo grátis</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll" data-i18n="role_baixo">Role para baixo</div>
+
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  1️⃣ PLATAFORMAS PRINCIPAIS — Privacy + OnlyFans               ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section id="main-platforms" class="section">
+  <div class="container">
+    <div class="section-content">
+
+      <div class="section-header" data-reveal>
+        <span class="section-eyebrow" data-i18n="assinaturas">Assinaturas</span>
+        <h2 class="section-title">
+          <span data-i18n="onde_acompanhar_pre">Onde me</span>
+          <em data-i18n="onde_acompanhar_em">acompanhar</em>
+        </h2>
+        <p class="section-sub" data-i18n="duas_plataformas">
+          Duas plataformas, dois jeitos. Escolha a sua.
+        </p>
+      </div>
+
+      <div class="platforms-grid">
+
+        <!-- ── PRIVACY ── -->
+        <a href="./privacy.html" id="privacy" class="platform-card privacy" data-reveal>
+          <div class="platform-card-top">
+            <span class="platform-badge privacy">🇧🇷 Privacy</span>
+            <div class="platform-price">R$ 20<small>/mês</small></div>
+          </div>
+
+          <h3 class="platform-title">
+            <span data-i18n="privacy_title_pre">Pra quem quer me acompanhar em</span>
+            <span class="platform-title-accent" data-i18n="privacy_title_em">português</span>
+          </h3>
+          <p class="platform-desc" data-i18n="privacy_desc">
+            Conteúdo exclusivo no jeito brasileiro. Pix simples, sem complicação.
+          </p>
+
+          <ul class="platform-features">
+            <li><i class="fas fa-check"></i> <span data-i18n="priv_feat1">Vídeos exclusivos semanais</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="priv_feat2">Fotos em alta resolução</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="priv_feat3">Pagamento em Pix</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="priv_feat4">Cancele quando quiser</span></li>
+          </ul>
+
+          <span class="platform-cta">
+            <span data-i18n="assinar_privacy">Assinar Privacy</span>
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- ── ONLYFANS ── -->
+        <a href="./onlyfans.html" id="onlyfans" class="platform-card onlyfans" data-reveal>
+          <div class="platform-card-top">
+            <span class="platform-badge onlyfans">🌎 OnlyFans</span>
+            <div class="platform-price">$ 20<small>/mo</small></div>
+          </div>
+
+          <h3 class="platform-title">
+            <span data-i18n="of_title_pre">Pra quem quer a experiência</span>
+            <span class="platform-title-accent" data-i18n="of_title_em">internacional</span>
+          </h3>
+          <p class="platform-desc" data-i18n="of_desc">
+            Conteúdo em inglês, lives e mensagens diretas. O jeito internacional.
+          </p>
+
+          <ul class="platform-features">
+            <li><i class="fas fa-check"></i> <span data-i18n="of_feat1">Conteúdo exclusivo semanal</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="of_feat2">Lives e extras</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="of_feat3">Acesso a DMs (vagas limitadas)</span></li>
+            <li><i class="fas fa-check"></i> <span data-i18n="of_feat4">Pacotes 3/6/12 meses</span></li>
+          </ul>
+
+          <span class="platform-cta">
+            <span data-i18n="assinar_of">Assinar OnlyFans</span>
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  2️⃣ VÍDEOS / FYBOT                                             ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section id="videos-section" class="section">
+  <div class="container">
+    <div class="section-content">
+
+      <div class="section-header" data-reveal>
+        <span class="section-eyebrow" data-i18n="videos_avulsos">Vídeos avulsos</span>
+        <h2 class="section-title">
+          <span data-i18n="sem_assinar">Sem assinar?</span>
+          <em data-i18n="compra_avulsa">Compra avulsa</em>
+        </h2>
+        <p class="section-sub" data-i18n="sem_assinar_sub">
+          Pra quem quer só um vídeo específico, sem compromisso mensal.
+        </p>
+      </div>
+
+      <div class="videos-card" data-reveal>
+        <div class="videos-card-icon">
+          <i class="fas fa-video"></i>
+        </div>
+
+        <h3 class="videos-card-title">
+          <span data-i18n="catalogo_pre">Catálogo direto no</span>
+          <span class="videos-card-title-accent">Telegram</span>
+        </h3>
+        <p class="videos-card-desc" data-i18n="catalogo_desc">
+          Cada vídeo individualmente, com prévia. Pagamento automático, entrega na hora.
+        </p>
+
+        <div class="videos-features">
+          <div class="videos-feature">
+            <i class="fas fa-bolt"></i>
+            <span data-i18n="vid_f1">Entrega automática 24h</span>
+          </div>
+          <div class="videos-feature">
+            <i class="fas fa-eye"></i>
+            <span data-i18n="vid_f2">Prévia antes de comprar</span>
+          </div>
+          <div class="videos-feature">
+            <i class="fas fa-lock"></i>
+            <span data-i18n="vid_f3">Pagamento seguro</span>
+          </div>
+          <div class="videos-feature">
+            <i class="fas fa-tag"></i>
+            <span data-i18n="vid_f4">Packs com desconto</span>
+          </div>
+        </div>
+
+        <!-- 👇 SUBSTITUA pelo link do seu bot Fybot -->
+        <a href="https://t.me/SEU_BOT_FYBOT" target="_blank" rel="noopener" class="btn btn-primary">
+          <i class="fab fa-telegram"></i>
+          <span data-i18n="ver_catalogo">Ver catálogo no bot</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  3️⃣ PLATAFORMAS SECUNDÁRIAS — XVideos + Twitter                ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section class="section">
+  <div class="container">
+    <div class="section-content">
+
+      <div class="section-header" data-reveal>
+        <span class="section-eyebrow" data-i18n="outras_redes">Outras redes</span>
+        <h2 class="section-title">
+          <span data-i18n="tambem_pre">Também estou</span>
+          <em data-i18n="tambem_em">aqui</em>
+        </h2>
+      </div>
+
+      <div class="secondary-grid">
+
+        <!-- 👇 Trocar pelos links reais -->
+        <a href="https://www.xvideos.com/profiles/vanessarafaella" target="_blank" rel="noopener" class="secondary-card" data-reveal>
+          <div class="secondary-icon xvideos">
+            <i class="fas fa-play"></i>
+          </div>
+          <div class="secondary-info">
+            <div class="secondary-name">XVideos</div>
+            <div class="secondary-desc" data-i18n="xv_desc">Vídeos completos e prévias</div>
+          </div>
+          <div class="secondary-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <a href="https://twitter.com/vanessarafaella" target="_blank" rel="noopener" class="secondary-card" data-reveal>
+          <div class="secondary-icon twitter">
+            <i class="fab fa-x-twitter"></i>
+          </div>
+          <div class="secondary-info">
+            <div class="secondary-name">Twitter / X</div>
+            <div class="secondary-desc" data-i18n="tw_desc">Atualizações e prévias diárias</div>
+          </div>
+          <div class="secondary-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  4️⃣ EXPERIÊNCIAS EXCLUSIVAS                                    ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section id="exclusive" class="section">
+  <div class="container">
+    <div class="section-content">
+
+      <div class="section-header" data-reveal>
+        <span class="section-eyebrow" data-i18n="sob_consulta">Sob consulta</span>
+        <h2 class="section-title">
+          <span data-i18n="experiencias_pre">Experiências</span>
+          <em data-i18n="experiencias_em">exclusivas</em>
+        </h2>
+        <p class="section-sub" data-i18n="experiencias_sub">
+          Pra quem quer algo mais. Vagas limitadas.
+        </p>
+      </div>
+
+      <div class="exclusive-grid">
+
+        <a href="./videochamada.html" class="exclusive-card" data-reveal>
+          <div class="exclusive-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <span class="exclusive-tag" data-i18n="vagas_limitadas">Vagas limitadas</span>
+          <h3 class="exclusive-title" data-i18n="videochamada_title">Videochamada 1:1</h3>
+          <p class="exclusive-desc" data-i18n="videochamada_desc">
+            Tempo exclusivo comigo, ao vivo. Filtramos cada solicitação pessoalmente.
+          </p>
+          <span class="exclusive-cta">
+            <span data-i18n="saber_mais">Saber mais</span>
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <a href="#" id="linksWa" target="_blank" class="exclusive-card" data-reveal>
+          <div class="exclusive-icon">
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <span class="exclusive-tag" data-i18n="personalizado">Personalizado</span>
+          <h3 class="exclusive-title" data-i18n="pedidos_title">Pedidos especiais</h3>
+          <p class="exclusive-desc" data-i18n="pedidos_desc">
+            Conteúdo personalizado, dedicatória, fetiche. Converse comigo direto.
+          </p>
+          <span class="exclusive-cta">
+            <span data-i18n="falar_comigo">Falar comigo</span>
+            <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  5️⃣ TELEGRAM CTA                                               ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<section id="telegram-cta" class="section">
+  <div class="container">
+    <div class="telegram-content" data-reveal>
+
+      <div class="telegram-icon-big">
+        <i class="fab fa-telegram"></i>
+      </div>
+
+      <span class="telegram-tag" data-i18n="gratis_sem_compromisso">Grátis · sem compromisso</span>
+
+      <h2 class="telegram-title">
+        <span data-i18n="telegram_title_pre">Grupo VIP no</span>
+        <span class="telegram-title-accent">Telegram</span>
+      </h2>
+
+      <p class="telegram-text" data-i18n="telegram_text">
+        Previews grátis toda semana, conteúdo de cortesia e avisos em primeira mão.
+      </p>
+
+      <a href="./telegram.html" class="btn-telegram">
+        <span data-i18n="entrar_grupo">Entrar no grupo agora</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+
+      <p class="telegram-hint" data-i18n="fas_dentro">+1500 fãs já estão dentro</p>
+
+    </div>
+  </div>
+</section>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  📄 FOOTER                                                     ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">🔥 Vanessa Rafaella</div>
+      <p data-i18n="footer_aviso">Conteúdo exclusivo para maiores de 18 anos</p>
+      <p>© 2026 · <a href="#" id="footerWa" data-i18n="contato">Contato</a></p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- 💬 WhatsApp flutuante -->
+<a href="#" id="waFloat" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<!--
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  📱 BOTTOM BAR MOBILE                                          ║
+  ╚═══════════════════════════════════════════════════════════════╝
+-->
+<nav class="bottom-bar" aria-label="Atalhos">
+  <a href="./privacy.html" class="footer-btn active">
+    <div class="footer-btn-icon privacy"><i class="fas fa-fire"></i></div>
+    <span>Privacy</span>
+  </a>
+  <a href="./onlyfans.html" class="footer-btn">
+    <div class="footer-btn-icon onlyfans"><i class="fas fa-heart"></i></div>
+    <span>OnlyFans</span>
+  </a>
+  <a href="#videos-section" class="footer-btn">
+    <div class="footer-btn-icon videos"><i class="fas fa-video"></i></div>
+    <span data-i18n="nav_videos">Vídeos</span>
+  </a>
+  <a href="./telegram.html" class="footer-btn">
+    <div class="footer-btn-icon telegram"><i class="fab fa-telegram"></i></div>
+    <span>Telegram</span>
+  </a>
+  <a href="https://twitter.com/vanessarafaella" target="_blank" rel="noopener" class="footer-btn">
+    <div class="footer-btn-icon twitter"><i class="fab fa-x-twitter"></i></div>
+    <span>Twitter</span>
+  </a>
+</nav>
+
+
+<!-- 🎬 JavaScript -->
+<script src="./js/script.js"></script>
+
+</body>
+</html>
